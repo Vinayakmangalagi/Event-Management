@@ -2,11 +2,10 @@ package com.event.eventManagement.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Data
@@ -25,12 +24,12 @@ public class Event {
     private Double fee;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate startDate;
+    private Date startDate;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate endDate;
+    private Date endDate;
 
-    public Event(Long id, String name, String description, Double fee, LocalDate startDate, LocalDate endDate) {
+    public Event(Long id, String name, String description, Double fee, Date startDate, Date endDate) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -74,19 +73,19 @@ public class Event {
         this.fee = fee;
     }
 
-    public LocalDate getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 }
