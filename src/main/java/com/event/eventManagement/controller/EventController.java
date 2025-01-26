@@ -25,4 +25,20 @@ public class EventController {
     public ResponseEntity<Event> createEvent(@RequestBody Event event){
         return new ResponseEntity<>(eventService.create(event),HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Event> getEventById(@PathVariable Long id){
+        return new ResponseEntity<>(eventService.getEventById(id),HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Event> updateEvent(@RequestBody Event e, @PathVariable Long id){
+        return new ResponseEntity<>(eventService.updateEvent(e,id),HttpStatus.OK);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<?> deleteEvent(@RequestParam Long id){
+        eventService.deleteEvent(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
