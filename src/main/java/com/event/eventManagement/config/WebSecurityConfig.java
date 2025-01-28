@@ -25,7 +25,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.cors(Customizer.withDefaults())
                         .csrf(csrf->csrf.disable())
-                                .authorizeHttpRequests(request->request.anyRequest().authenticated())
+                                .authorizeHttpRequests(request->request.requestMatchers("/login","register").permitAll().anyRequest().authenticated())
                                         .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                                                 .httpBasic(Customizer.withDefaults())
                 .build();
